@@ -1,6 +1,6 @@
 # Import GetAntoineCoef because it return the antoine coefficients for using
 # them into the calcs
-from GetAntoineCoef import get_antoine_coef
+from antoine import get_antoine_coef
 
 # Import the log10 function from Math module
 from math import log10
