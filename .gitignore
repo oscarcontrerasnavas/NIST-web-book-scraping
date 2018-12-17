@@ -3,3 +3,4 @@ _pychache_/
 *.pyc
 *.log
 others/
+docs.md
