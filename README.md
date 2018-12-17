@@ -32,13 +32,13 @@ The GET request returns the server response –aka website– to our workflow al
 
 It happens that you as a web client can send public `variables` and their values to the server through the web address just like this:
 
-```http
+```
 https://www.example.com/page?var1=value1&var2=value2
 ```
 
 Where `var1` and `var2` are the variables passed with their respective values after que equal sign, and the ampersand (&) works as a separator for concatenating multiple variables. So, having it in mind, just give a look to these NIST WebBook links.
 
-```http
+```
 https://webbook.nist.gov/cgi/cbook.cgi?Name=water&Mask=4
 https://webbook.nist.gov/cgi/cbook.cgi?Name=methane&Mask=4
 ```
@@ -85,5 +85,5 @@ def get_html_table(Name):
     return table
 ```
 
-We define the `get_html_table` function, work on the `url` and make the request to get the `respond.content` within the top *7 lines*. While *line 10* parse the `raw_html` variable and create an instance of  a BeautifulSoup object (see documentation for more information) and storage it into `html`, *line 14* using   the`find()` function from the BeautifulSoup  library, extract only the one table which `aria-label`  attribute is exactly `'Anotine Equation Parameters'` value.
+We define the `get_html_table` function, work on the `url` and make the request to get the `respond.content` within the top *7 lines*. While *line 10* parse the `raw_html` variable and create an instance of  a BeautifulSoup object (see documentation for more information) and storage it into `html`, *line 14* using   the `find()` function from the BeautifulSoup  library, extracting the only one table which `aria-label`  attribute is exactly `'Anotine Equation Parameters'` value.
 
