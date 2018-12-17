@@ -1,3 +1,5 @@
 .vscode/
 _pychache_/
 *.pyc
+*.log
+others/
