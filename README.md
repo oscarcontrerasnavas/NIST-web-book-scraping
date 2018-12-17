@@ -33,14 +33,12 @@ The GET request returns the server response –aka website– to our workflow al
 It happens that you as a web client can send public `variables` and their values to the server through the web address just like this:
 
 ```http
-HTTP
 https://www.example.com/page?var1=value1&var2=value2
 ```
 
 Where `var1` and `var2` are the variables passed with their respective values after que equal sign, and the ampersand (&) works as a separator for concatenating multiple variables. So, having it in mind, just give a look to these NIST WebBook links.
 
 ```http
-HTTP
 https://webbook.nist.gov/cgi/cbook.cgi?Name=water&Mask=4
 https://webbook.nist.gov/cgi/cbook.cgi?Name=methane&Mask=4
 ```
@@ -72,7 +70,7 @@ Find some CSS selector or attribute only this table has using the DOM inspector 
 def get_html_table(Name):
     
     # We treat the url attaching the Name variable to it.
-    url = str.format('https://webbook.nist.gov/cgi/cbook.cgi?Name={0}&Mask=4', 		 Name.lower())
+    url = str.format('https://webbook.nist.gov/cgi/cbook.cgi?Name={0}&Mask=4', Name.lower())
 
     # Function to get the request made, see above.
     raw_html = get_response(url)
