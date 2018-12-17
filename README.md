@@ -49,7 +49,7 @@ Both have the `Name` variable and the `Mask` variable. Where the first one ask f
 
 Finally, we have:
 
-```python
+```python {.line-numbers}
 def get_response(url):
     return raw_html = get(url).content
 ```
