@@ -62,7 +62,30 @@ This is the table I want to "copy and paste" to my algorithm and more exactly, t
 
 ![Table picture from NIST](img/table.jpg)
 
+
+
 **How can we do that?** This way: 
 
 Find some CSS selector or attribute only this table has using the DOM inspector in your web browser. For Chrome/Chromium make second click over the table and select `Inspect` on the pop up. In this case, the attribute `aria-label` label is unique and its value **_"Antoine Equation Parameters"_** 
+
+```python
+def get_html_table(Name):
+    
+    # We treat the url attaching the Name variable to it.
+    url = str.format('https://webbook.nist.gov/cgi/cbook.cgi?Name={0}&Mask=4', 		 Name.lower())
+
+    # Function to get the request made, see above.
+    raw_html = get_response(url)
+
+    # Parse the html using BeautifulSoup.
+    html = BeautifulSoup(raw_html, 'html.parser')
+
+    # Extract the table that contains the data, the table has a specific
+    # attributes 'aria-label' as 'Antoine Equation Parameters'.
+    table = html.find('table', attrs={'aria-label': 'Antoine Equation Parameters'})
+    
+    return table
+```
+
+We define the `get_html_table` function, work on the `url` and make the request to get the `respond.content` within the top *7 lines*. While *line 10* parse the `raw_html` variable and create an instance of  a BeautifulSoup object (see documentation for more information) and storage it into `html`, *line 14* using   the`find()` function from the BeautifulSoup  library, extract only the one table which `aria-label`  attribute is exactly `'Anotine Equation Parameters'` value.
 
