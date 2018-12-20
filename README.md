@@ -4,4 +4,7 @@ As Chemical Engineers can know, performing chemical processes often needs them t
 
 ![NIST Logo](img/nist.png)
 
-With this idea on mind it was built a small script for extracting the *Antoine Equation Parameters* from the **National Institute of Standards and Technology** of  the U.S. Department of Commerce [Online Chemistry Webbook](https://webbook.nist.gov/chemistry/). However, if any of the readers want to get another data from the same or different source, I hope the explanation showed [here]() will be good enough for them to achieve it.
+With this idea on mind it was built a small script for extracting the *Antoine Equation Parameters* from the **National Institute of Standards and Technology** of  the U.S. Department of Commerce [Online Chemistry Webbook](https://webbook.nist.gov/chemistry/). However, if any of the readers want to get another data from the same or different source, I hope the explanation showed [here](https://oscarcontrerasnavas.github.io/python/nist-web-book-scraping.html) will be good enough for them to achieve it.
+
+[Link to the explanation](https://oscarcontrerasnavas.github.io/python/nist-web-book-scraping.html)
+
