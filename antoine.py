@@ -1,4 +1,4 @@
-# Import url function from requests module because is the function in charge of
+# Import get function from requests module because is the function in charge of
 # getting the HTTP GET request with the given url.
 from requests import get
 
@@ -6,6 +6,9 @@ from requests import get
 # handle de DOM.
 from bs4 import BeautifulSoup
 
+# Import closing for ensure that any network resource will free when they go out
+# of scope.
+from contextlib import closing
 
 def get_antoine_coef(Name, Temperature):
 
@@ -61,9 +64,9 @@ def get_antoine_coef(Name, Temperature):
 
 
     # Checking if the Temperature gave fits in some interval
-    index = int()
+    index = None
     for i, interval in enumerate(Temperatures):
-        if (interval[0] <= Temperature 
+        if (interval[0] <= Temperature
             and Temperature <= interval[1]):
             index = i
             break
@@ -77,7 +80,7 @@ def get_antoine_coef(Name, Temperature):
         A = As[index]
         B = Bs[index]
         C = Cs[index]
-        return [A, B, C] 
+        return [A, B, C]
 
 
 def get_html_table(Name):
@@ -105,23 +108,40 @@ def get_html_table(Name):
     # Extract the table that contains the data, the table has a specific
     # attributes 'aria-label' as 'Antoine Equation Parameters'.
     table = html.find('table', attrs={'aria-label': 'Antoine Equation Parameters'})
-    
+
     return table
 
 
 def get_response(url):
 
-    """ Return the raw_html for parsing then.
+    """ Return the raw_html for parsing later or None if can't reach the page
 
     :param url:
         The string for the GET request.
 
     :rtype: BeautifulSoup Object
 
+    :rtype: None if can't reach the website
+
     """
 
-    # I must implement a Exceptions Handle here in the future, thats why I
-    # separated the function form the get_html.
-    raw_html = get(url).content
+    try: 
+        with closing(get(url, stream=True)) as resp:
+            if is_good_response(resp):
+                return resp.content
+            else:
+                return None
+    
+    except:
+        print('Not found')
+        return None
 
-    return raw_html
+
+def is_good_response(resp):
+    """
+    Returns True if the response seems to be HTML, False otherwise.
+    """
+    content_type = resp.headers['Content-Type'].lower()
+    return (resp.status_code == 200 
+            and content_type is not None 
+            and content_type.find('html') > -1)        
