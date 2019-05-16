@@ -74,7 +74,7 @@ def get_antoine_coef(Name, Temperature):
             index = None
 
     if index == None:
-        print('Sorry, the data for the given temperature {0}K does not exist in the Data Base', Temperature)
+        print('Sorry, the data for the given temperature %.2f K does not exist in the Data Base' % Temperature)
         return None
     else:
         A = As[index]
